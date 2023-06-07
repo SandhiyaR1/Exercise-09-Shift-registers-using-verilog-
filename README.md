@@ -40,18 +40,74 @@ The logic circuit given below shows a parallel-in-parallel-out shift register. T
 FIGURE-04
 A Parallel in Parallel out (PIPO) shift register is used as a temporary storage device and like SISO Shift register it acts as a delay element.
 
-### Procedure
-/* write all the steps invloved */
 
+### Procedure
+
+
+1.Use quartus software and import required modules.
+
+2.Assign inputs and outputs for shift registers.
+
+3.Assign logic for input to give output at positive edge.
+
+4.Perform opertaions and produce rtl circuit.
+
+5.end module
 
 
 ### PROGRAM 
-/*
-Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
-*/
 
+Program for  Implementation-of Shift-registers-using-verilog-
+ ```
+Developed by: Sandhiya R
+RegisterNumber:  212222230129
+```
+### PROGRAM 1
+```
+     module SIPO(c,si,po);
+     input c,si;
+     output[7:0]po;
+     reg [0:7]temp;
+     always@(posedge c)
+     begin
+     temp={temp[0:6],si};
+     end
+     assign po=temp;
+     endmodule
+ ```
+ 
+### PROGRAM 2
+```
+    module PISO (c,pi,so,load);
+    input [3:0]pi;
+    input load,c;
+    output reg so;
+    reg [3:0]tmp;
+    always @(posedge c)
+    begin
+    if(load)
+    tmp<=pi;
+    else
+    begin 
+    so<=tmp[3];
+    tmp<={tmp[2:0],1'b0};
+    end 
+    end 
+    endmodule 
+```
+### PROGRAM 3
+ 
+ ```
+    module sipo(pi,po,clk);
+   input clk;
+   input [3:0] pi;
+   output reg [3:0] po;
+   always @ (posedge clk)
+   begin 
+   po=pi;
+   end
+   endmodule 
+```
 
 
 
@@ -59,11 +115,14 @@ RegisterNumber:
 
 ### RTL LOGIC  REGISTERS   
 
+![243298417-1efbd71f-292f-4295-be2a-9de9f0f9438e](https://github.com/SandhiyaR1/Exercise-09-Shift-registers-using-verilog-/assets/113497571/c26b0a0d-c1a5-43a1-8ceb-0713537ff369)
+
+
+![243298607-a0ab183b-427c-424d-bb1f-92503c65305e](https://github.com/SandhiyaR1/Exercise-09-Shift-registers-using-verilog-/assets/113497571/3000bd99-03a1-4947-9d00-01b0e8c7d065)
 
 
 
-
-
+![243298770-b04e0fe6-e5c5-4bdf-94cd-fb8b6f584a1a](https://github.com/SandhiyaR1/Exercise-09-Shift-registers-using-verilog-/assets/113497571/44bff864-b82c-41a7-8cbc-6ca84c6eb6de)
 
 
 
@@ -71,9 +130,12 @@ RegisterNumber:
 
 
 
+![243299305-af33cadd-777e-4673-a14d-364c99e18daa](https://github.com/SandhiyaR1/Exercise-09-Shift-registers-using-verilog-/assets/113497571/5fc6951f-34e3-4bec-8730-7abc89a210d2)
 
 
 
 
 
 ### RESULTS 
+
+Thus the program to implement shift registers is done successfully.
